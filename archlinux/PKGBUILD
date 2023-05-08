@@ -1,0 +1,22 @@
+pkgname=gdgtui
+pkgver=0.2.0
+pkgrel=1.0
+pkgdesc='A simple battery saver tool'
+arch=('x86_64' 'aarch64')
+url='https://github.com/Decodetalkers/batteryasjusttui'
+license=('MIT')
+makedepends=('git' 'ninja' 'meson')
+source=('source.tar.gz')
+sha512sums=('SKIP')
+
+build() {
+  meson setup \
+    -Dprefix=/usr \
+    -Dbuildtype=release \
+    build
+  ninja -C build
+}
+
+package() {
+  DESTDIR="$pkgdir" ninja -C build install
+}
