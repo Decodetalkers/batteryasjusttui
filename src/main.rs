@@ -77,7 +77,7 @@ fn choose_selection<T: ToString>(
     let Ok(selection) = FuzzySelect::with_theme(&ColorfulTheme::default())
         .with_prompt(format!("Now to choose {section}"))
         .default(0)
-        .items(&to_select)
+        .items(to_select)
         .interact() else {
             return -1;
     };
